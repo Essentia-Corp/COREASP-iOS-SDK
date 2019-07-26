@@ -8,6 +8,7 @@
 #import "ViewController.h"
 #import "AppDelegate.h"
 
+
 @implementation ViewController
 
 #pragma mark - View lifecycle
@@ -26,6 +27,18 @@
 {
     [super viewDidLoad];
     self.title = @"設定";
+    [self initLocation];
+}
+
+- (void)initLocation{
+    if (self.locationManager == nil) {
+        self.locationManager = [[CLLocationManager alloc] init];
+    }
+    self.locationManager.desiredAccuracy=kCLLocationAccuracyBest;
+    self.locationManager.distanceFilter=kCLDistanceFilterNone;
+    
+    self.locationManager.delegate = self;
+    [self.locationManager startUpdatingLocation];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -106,4 +119,21 @@
     [alert show];
 }
 
+#pragma mark - CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    CLLocation *location = [locations lastObject];
+    
+    if (location != nil) {
+        NSString *latitude = [NSString stringWithFormat:@"%.5f", location.coordinate.latitude];
+        NSString *longitude = [NSString stringWithFormat:@"%.5f", location.coordinate.longitude];
+    
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            self.locationLabel.text = [NSString stringWithFormat:@"ロケーション: (%@,%@)", latitude,longitude];
+        });
+        
+        self.locationManager.delegate = nil;
+        self.locationManager = nil;
+    }
+    
+}
 @end

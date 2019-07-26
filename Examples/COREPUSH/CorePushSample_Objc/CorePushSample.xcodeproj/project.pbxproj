@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		118FB72322D73E010006AB72 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 118FB72222D73E010006AB72 /* CoreLocation.framework */; };
 		42446758163E294400AC20CD /* history.png in Resources */ = {isa = PBXBuildFile; fileRef = 42446756163E294400AC20CD /* history.png */; };
 		42446759163E294400AC20CD /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 42446757163E294400AC20CD /* setting.png */; };
 		425305871BAE601A006D8E2E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 425305861BAE601A006D8E2E /* Default-568h@2x.png */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		118FB72222D73E010006AB72 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		42446756163E294400AC20CD /* history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = history.png; sourceTree = "<group>"; };
 		42446757163E294400AC20CD /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
 		425305861BAE601A006D8E2E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -46,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				118FB72322D73E010006AB72 /* CoreLocation.framework in Frameworks */,
 				425E1C7F1F21CEFE00950596 /* COREASP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,6 +59,7 @@
 		42706B411DDF35B5009F8473 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				118FB72222D73E010006AB72 /* CoreLocation.framework */,
 				425E1C7E1F21CEFE00950596 /* COREASP.framework */,
 			);
 			name = Frameworks;
@@ -148,6 +152,7 @@
 				ORGANIZATIONNAME = "株式会社ブレスサービス";
 				TargetAttributes = {
 					86ED473514B188A4000F6001 = {
+						DevelopmentTeam = None;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -165,6 +170,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 86ED472B14B188A4000F6001;
@@ -313,7 +319,7 @@
 				CODE_SIGN_ENTITLEMENTS = CorePushSample/CorePushSample.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = None;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CorePushSample\"",
@@ -341,9 +347,9 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CorePushSample/CorePushSample.entitlements;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = None;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/CorePushSample\"",

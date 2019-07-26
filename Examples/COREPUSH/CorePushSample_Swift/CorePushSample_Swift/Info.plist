@@ -39,6 +39,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>$(PRODUCT_NAME)が位置情報へのアクセスを求めています。
+
+</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

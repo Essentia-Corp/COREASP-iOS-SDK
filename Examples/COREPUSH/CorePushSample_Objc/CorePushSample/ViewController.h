@@ -4,11 +4,13 @@
 //
 //  Copyright (c) 2017 株式会社ブレスサービス. All rights reserved.
 //
-
-@interface ViewController : UIViewController
+#import <CoreLocation/CoreLocation.h>
+@interface ViewController : UIViewController<CLLocationManagerDelegate>
 
 @property (strong, nonatomic) IBOutlet UISwitch* notificationSwitch;
 @property (assign, nonatomic) id delegate;
+@property (nonatomic, strong) CLLocationManager             *locationManager;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 
 // スイッチをON・OFFに切り替えた時に呼ばれる
 - (IBAction)valueChangeNotificationSwitch:(id)sender;

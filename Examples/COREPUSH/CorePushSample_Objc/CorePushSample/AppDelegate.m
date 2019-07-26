@@ -13,7 +13,7 @@
 // 通知のコンフィグキーの設定
 //*********************************************************************************************
 
-#define CONFIG_KEY @"XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+#define CONFIG_KEY @"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 @implementation AppDelegate
 
@@ -48,6 +48,8 @@
     CorePushManager.shared.configKey = CONFIG_KEY; // コンフィグキーの設定
     CorePushManager.shared.delegate = self; // CorePushManagerDelegateの設定
     [CorePushManager.shared registerForRemoteNotifications]; // 通知の登録
+    //位置情報プッシュ通知を送信するためにユーザーの位置情報を取得する
+    [CorePushManager.shared trackUserLocation];
     
     // iOS10以上の場合の通知のデリゲート設定
     if ([[[UIDevice currentDevice] systemVersion] compare:@"10.0" options:NSNumericSearch] != NSOrderedAscending) {

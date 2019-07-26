@@ -7,6 +7,7 @@
 
 import UIKit
 import COREASP
+import CoreLocation
 
 /**
     通知設定のビューコントローラ
@@ -14,10 +15,14 @@ import COREASP
 class ViewController: UIViewController {
     
     @IBOutlet weak var notificationSwitch: UISwitch!
+    @IBOutlet weak var locationLabel: UILabel!
+    
+    var locationManager: CLLocationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "設定";
+        self.initLocation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +43,17 @@ class ViewController: UIViewController {
             notificationSwitch.isOn = false
         }
     }
+    func initLocation() {
+        if (self.locationManager == nil){
+            self.locationManager = CLLocationManager()
+        }
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locationManager.distanceFilter = kCLDistanceFilterNone;
+        
+        self.locationManager.delegate = self;
+        self.locationManager.startUpdatingLocation();
+    }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -50,6 +66,7 @@ class ViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.CorePushManagerUnregisterTokenRequestSuccess, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.CorePushManagerUnregisterTokenRequestFail, object: nil)
     }
+    
     
     @IBAction func valueChangeNotificationSwitch() {
         
@@ -79,7 +96,7 @@ class ViewController: UIViewController {
 extension ViewController {
     
     // デバイストークン登録成功時に呼び出される。
-    func registerTokenRequestSuccess() {
+    @objc func registerTokenRequestSuccess() {
         notificationSwitch.isOn = true
         
         UIAlertView(title: "成功", message: "デバイストークンの登録に成功",
@@ -91,7 +108,7 @@ extension ViewController {
     
     
     // デバイストークン登録失敗に呼び出される。
-    func registerTokenRequestFail() {
+    @objc func registerTokenRequestFail() {
         notificationSwitch.isOn = false
         
         UIAlertView(title: "エラー", message: "デバイストークンの登録に失敗",
@@ -102,7 +119,7 @@ extension ViewController {
     }
     
     // デバイストークン削除成功時に呼び出される。
-    func unregisterTokenRequestSuccess() {
+    @objc func unregisterTokenRequestSuccess() {
         notificationSwitch.isOn = false
         
         UIAlertView(title: "成功", message: "デバイストークンの削除に成功",
@@ -113,7 +130,7 @@ extension ViewController {
     }
     
     // デバイストークン削除失敗時に呼び出される。
-    func unregisterTokenRequestFail() {
+    @objc func unregisterTokenRequestFail() {
         notificationSwitch.isOn = true
         UIAlertView(title: "エラー", message: "デバイストークンの削除に失敗",
                     delegate: nil,
@@ -122,3 +139,19 @@ extension ViewController {
     }
 }
 
+extension ViewController:CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        //let location = locations.last
+        guard let location = locations.last else {
+            return;
+        }
+        let latitude = String(format: "%.5f", location.coordinate.latitude)
+        let longitude = String(format: "%.5f", location.coordinate.longitude)
+        DispatchQueue.main.async {
+            self.locationLabel.text = String(format: "ロケーション: (%@,%@)", latitude, longitude)
+        }
+        
+        self.locationManager.delegate = nil
+        self.locationManager = nil
+    }
+}

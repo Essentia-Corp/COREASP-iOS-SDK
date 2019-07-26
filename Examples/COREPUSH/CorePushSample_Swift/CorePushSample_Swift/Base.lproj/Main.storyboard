@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ga2-n8-dWr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ga2-n8-dWr">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -40,7 +40,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97e-YY-0mB">
-                                <rect key="frame" x="81.5" y="114" width="212" height="30"/>
+                                <rect key="frame" x="81.5" y="114" width="212" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="プッシュ通知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxD-Vt-Isl">
                                         <rect key="frame" x="5" y="5" width="104" height="21"/>
@@ -65,12 +65,20 @@
                                     <constraint firstItem="h0K-JD-qON" firstAttribute="leading" secondItem="kxD-Vt-Isl" secondAttribute="trailing" constant="49" id="vZj-Sk-qXP"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBo-j3-Vdx">
+                                <rect key="frame" x="187.5" y="165" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="cBo-j3-Vdx" firstAttribute="top" secondItem="97e-YY-0mB" secondAttribute="bottom" constant="20" id="4t6-ow-xy9"/>
                             <constraint firstItem="97e-YY-0mB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9Kt-9i-fru"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="97e-YY-0mB" secondAttribute="bottom" constant="500" id="Kgw-Hz-gGZ"/>
                             <constraint firstItem="97e-YY-0mB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="eAH-O5-gOq"/>
+                            <constraint firstItem="cBo-j3-Vdx" firstAttribute="centerX" secondItem="97e-YY-0mB" secondAttribute="centerX" id="yNO-qh-Ydy"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -80,6 +88,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="eXa-fP-fpc"/>
                     <connections>
+                        <outlet property="locationLabel" destination="cBo-j3-Vdx" id="cVX-tl-1pP"/>
                         <outlet property="notificationSwitch" destination="h0K-JD-qON" id="dND-Kf-Swd"/>
                     </connections>
                 </viewController>
@@ -128,7 +137,7 @@
                     <tabBarItem key="tabBarItem" title="設定" image="setting.png" id="H6v-la-8FJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wJs-IG-ARb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -147,7 +156,7 @@
                     <tabBarItem key="tabBarItem" title="通知履歴" image="history.png" id="NBA-Ms-DS8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1iG-Cn-jGW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

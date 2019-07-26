@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // 通知のコンフィグキーの設定
     //*********************************************************************************************
     let CONFIG_KEY = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         //*********************************************************************************************
@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CorePushManager.shared.configKey = CONFIG_KEY             // コンフィグキーの設定
         CorePushManager.shared.delegate = self                    // CorePushManagerDelegateの設定
         CorePushManager.shared.registerForRemoteNotifications()   // 通知の登録
+        //位置情報プッシュ通知を送信するためにユーザーの位置情報を取得する
+        CorePushManager.shared.trackUserLocation()
         
         // iOS10以上の場合の通知のデリゲート設定
         if #available(iOS 10.0, *) {

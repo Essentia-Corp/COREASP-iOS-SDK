@@ -14,6 +14,7 @@ CORE ASP Developer Support（開発者向け）：<a href="http://developer.core
 * iOSバージョンは8.0以上が動作対象になります。
 * Xcodeバージョンは8.0以上が動作対象になります。
 * Xcodeのプロジェクトのターゲットを選択し、[Build Phases]の[Link Binary With Libraries]から SDK/COREASP.framework を追加してください。
+* CoreLocation.frameworkをプロジェクトに追加されていることを確認してください。
 
 ## アプリの通知設定
 
@@ -58,6 +59,12 @@ CorePushManager.shared.registerForRemoteNotifications()
 
 本メソッドはアプリの初回起動時かON/OFFスイッチなどで通知をONにする場合に使用してください。
 
+### 通知エリア
+位置情報プッシュ通知を送信するためにユーザーの位置情報を取得する
+
+```swift
+CorePushManager.shared.trackUserLocation()
+```
 ### 通知解除
 
 CorePushManager#unregisterDeviceToken を呼び出すことで CORE ASPサーバからデバイストークンを削除します。

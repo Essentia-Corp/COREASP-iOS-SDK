@@ -167,6 +167,12 @@ typedef NS_OPTIONS(NSUInteger, CorePushRemoteNotificationType) {
  */
 - (void)unregisterDeviceToken;
 
+
+/**
+ 位置情報プッシュ通知を送信するためにユーザーの位置情報を取得する
+ */
+- (void)trackUserLocation;
+
 /**
  指定のURLにユーザー属性を送信します。
  
@@ -191,5 +197,7 @@ typedef NS_OPTIONS(NSUInteger, CorePushRemoteNotificationType) {
  @param launchOptions 起動オプション。UIApplicationLaunchOptionsRemoteNotificationKeyをキーにUserInfoオブジェクトを取得します。
  */
 - (void)handleLaunchingNotificationWithOption:(nullable NSDictionary*)launchOptions;
+
+
 
 @end
